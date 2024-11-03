@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Author, Book, Publisher } from "../interfaces/entity";
 
-const url = "http://localhost:3001";
+export const url = `${import.meta.env.VITE_API_URL}`;
 
 export const getAuthors = async (): Promise<Author[]> => {
   const response = await axios.get<{ authors: Author[] }>(`${url}/authors`);

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Author } from "../interfaces/entity";
-
-const url = "http://localhost:3001";
+import { url } from "../services/apiServices";
 
 export const postAuthors = async (author: Author) => {
   delete author._id;
