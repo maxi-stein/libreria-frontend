@@ -7,10 +7,10 @@ WORKDIR /app
 # Copia los archivos de dependencias
 COPY package*.json ./
 
-# Instalar las dependencias sin la carpeta node_modules
-RUN npm install --legacy-peer-deps
+# Instala las dependencias
+RUN npm install
 
-# Copia el resto de la aplicación
+# Copia el resto de la aplicación, incluyendo el archivo .env
 COPY . .
 
 # Construye la aplicación para producción
@@ -27,3 +27,4 @@ EXPOSE 80
 
 # Comando para ejecutar nginx
 CMD ["nginx", "-g", "daemon off;"]
+
