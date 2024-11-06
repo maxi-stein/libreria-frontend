@@ -22,8 +22,8 @@ FROM nginx:stable-alpine
 # Copia los archivos construidos al directorio predeterminado de nginx
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Expone el puerto 80 para el contenedor
-EXPOSE 80
+# Expone el puerto 4000 para el contenedor
+EXPOSE 4000
 
 # Comando para ejecutar nginx
 CMD ["nginx", "-g", "daemon off;"]
