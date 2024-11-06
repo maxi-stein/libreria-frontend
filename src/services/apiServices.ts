@@ -1,10 +1,8 @@
-import axios from "axios";
 import { Author, Book, Publisher } from "../interfaces/entity";
-
-export const url = `${import.meta.env.VITE_API_URL}`;
+import { axiosInstance as axios } from "./axiosInstance";
 
 export const getAuthors = async (): Promise<Author[]> => {
-  const response = await axios.get<{ authors: Author[] }>(`${url}/authors`);
+  const response = await axios.get<{ authors: Author[] }>('/authors');
   if (response.status >= 400) {
     throw new Error("Network response was not ok");
   }
@@ -13,7 +11,7 @@ export const getAuthors = async (): Promise<Author[]> => {
 
 export const getPublishers = async (): Promise<Publisher[]> => {
   const response = await axios.get<{ publishers: Publisher[] }>(
-    `${url}/publishers`
+    `/publishers`
   );
   if (response.status >= 400) {
     throw new Error("Network response was not ok");
@@ -22,7 +20,7 @@ export const getPublishers = async (): Promise<Publisher[]> => {
 };
 
 export const getBooks = async (): Promise<Book[]> => {
-  const response = await axios.get<{ books: Book[] }>(`${url}/books`);
+  const response = await axios.get<{ books: Book[] }>(`/books`);
   if (response.status >= 400) {
     throw new Error("Network response was not ok");
   }
