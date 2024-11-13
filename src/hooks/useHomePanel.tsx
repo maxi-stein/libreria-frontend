@@ -10,15 +10,6 @@ import {
 } from "../interfaces/entity";
 
 export const useHomePanel = () => {
-  const handleCreate = (entityName: EntityName) => {
-    switch (entityName) {
-      case "authors":
-        break;
-      default:
-        break;
-    }
-  };
-
   const getTitleByName = (name: EntityName) => {
     switch (name) {
       case "authors":
@@ -71,5 +62,5 @@ export const useHomePanel = () => {
     }
   };
 
-  return { getTitleByName, getPanelContent, handleCreate };
+  return { getTitleByName, getPanelContent };
 };

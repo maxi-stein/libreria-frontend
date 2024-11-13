@@ -9,12 +9,11 @@ interface Props {
 }
 
 export const EntityPanel = ({ entityArray, entityName }: Props) => {
-  const { getPanelContent, getTitleByName, handleCreate } = useHomePanel();
+  const { getPanelContent, getTitleByName } = useHomePanel();
 
   const [showModal, setShowModal] = useState(false);
   const handleCreateEntity = () => {
     setShowModal(true);
-    handleCreate(entityName);
   };
 
   return (
@@ -30,7 +29,7 @@ export const EntityPanel = ({ entityArray, entityName }: Props) => {
           Crear
         </button>
       </h2>
-      {showModal && <CreateModal />}
+      {showModal && <CreateModal setShowModal={setShowModal} />}
       <div className="grid grid-cols-2 ">
         {getPanelContent(entityName, entityArray)}
       </div>

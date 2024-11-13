@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Author } from "../interfaces/entity";
 import { useCreateData } from "../hooks/useCreateData";
 
-export const CreateModal = () => {
+interface Props {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const CreateModal = ({ setShowModal }: Props) => {
   const [author, setAuthor] = useState<Author>({
     dni: "",
     name: "",
@@ -10,6 +14,11 @@ export const CreateModal = () => {
     surname: "",
   });
 
+  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    createAuthor();
+    setShowModal(false);
+  };
   const { createAuthor } = useCreateData(author);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +28,10 @@ export const CreateModal = () => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ">
-      <form className="bg-white rounded-md p-4" onSubmit={() => createAuthor()}>
+      <form
+        className="bg-white rounded-md p-4"
+        onSubmit={(e) => handleOnSubmit(e)}
+      >
         <h1 className="bg-white font-bold pb-4">Crear un Autor</h1>
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
