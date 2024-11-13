@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
+import { axiosInstance as axios } from "../services/axiosInstance";
 
 const deleteAuthorById = async (id: string) => {
-  const response = await axios.delete(`http://localhost:3001/authors/${id}`);
+  const response = await axios.delete(`authors/${id}`);
   if (response.status >= 400) {
     throw new Error("Network response was not ok");
   }
